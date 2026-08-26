@@ -1,0 +1,4887 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>GroupMaker</title>
+
+    <style>
+
+    * {
+        box-sizing: border-box;
+    }
+
+
+    body {
+        margin: 0;
+        font-family:
+            Arial,
+            Helvetica,
+            sans-serif;
+
+        background:
+            linear-gradient(
+                135deg,
+                #eef2ff,
+                #f8fafc
+            );
+
+        color: #1f2937;
+        min-height: 100vh;
+    }
+
+
+    /* ==========================================
+       HEADER
+       ========================================== */
+
+    header {
+        background:
+            linear-gradient(
+                135deg,
+                #2563eb,
+                #4f46e5
+            );
+
+        color: white;
+
+        padding: 40px 20px;
+
+        text-align: center;
+
+        box-shadow:
+            0 4px 15px
+            rgba(37, 99, 235, 0.25);
+    }
+
+
+    header h1 {
+        margin: 0;
+
+        font-size: 38px;
+
+        font-weight: 800;
+
+        letter-spacing: -0.5px;
+    }
+
+
+    header p {
+        margin:
+            10px
+            0
+            0;
+
+        font-size: 17px;
+
+        opacity: 0.92;
+    }
+
+
+    /* ==========================================
+       CONTENUTO PRINCIPALE
+       ========================================== */
+
+    main {
+        max-width: 1000px;
+
+        margin:
+            35px
+            auto;
+
+        padding:
+            0
+            20px;
+    }
+
+
+    /* ==========================================
+       CARD
+       ========================================== */
+
+    .card {
+        background: white;
+
+        border-radius: 16px;
+
+        padding: 28px;
+
+        margin-bottom: 22px;
+
+        border:
+            1px solid
+            rgba(229, 231, 235, 0.8);
+
+        box-shadow:
+            0 5px 20px
+            rgba(0, 0, 0, 0.06);
+
+        transition:
+            transform 0.2s ease,
+            box-shadow 0.2s ease;
+    }
+
+
+    .card:hover {
+        box-shadow:
+            0 8px 25px
+            rgba(0, 0, 0, 0.08);
+    }
+
+
+    .card h2 {
+
+    margin-top: 0;
+
+    margin-bottom: 22px;
+
+    color: #1e40af;
+
+    font-size: 23px;
+
+    font-weight: 750;
+
+    display: flex;
+
+    align-items: center;
+
+    letter-spacing: -0.3px;
+}
+
+
+    .card h3 {
+        color: #374151;
+
+        margin-top: 10px;
+    }
+
+
+    /* ==========================================
+       LABEL
+       ========================================== */
+
+    label {
+        display: block;
+
+        font-weight: bold;
+
+        margin-bottom: 8px;
+    }
+
+
+    /* ==========================================
+       INPUT
+       ========================================== */
+
+    /* ==========================================
+   CAMPI INPUT
+   ========================================== */
+
+input[type="number"] {
+
+    width: 100%;
+
+    padding: 13px 15px;
+
+    border:
+        1px solid
+        #d1d5db;
+
+    border-radius: 10px;
+
+    margin-bottom: 20px;
+
+    font-size: 16px;
+
+    font-weight: bold;
+
+    color: #1f2937;
+
+    background: #ffffff;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        transform 0.15s ease;
+
+    appearance: textfield;
+}
+
+
+input[type="number"]:hover {
+
+    border-color:
+        #93c5fd;
+
+}
+
+
+input[type="number"]:focus {
+
+    transform:
+        translateY(-1px);
+
+}
+
+
+/* ==========================================
+   CARICAMENTO FILE EXCEL
+   ========================================== */
+
+input[type="file"] {
+
+    width: 100%;
+
+    padding: 8px;
+
+    border:
+        2px dashed
+        #c7d2fe;
+
+    border-radius: 12px;
+
+    margin-bottom: 20px;
+
+    font-size: 16px;
+
+    background:
+        #f8faff;
+
+    cursor: pointer;
+
+    transition:
+    border-color 0.2s ease,
+    background 0.2s ease;
+}
+
+
+input[type="file"]:hover {
+
+    border-color:
+        #2563eb;
+
+    background:
+        #eff6ff;
+}
+
+
+/* ==========================================
+   PULSANTE "SCEGLI FILE"
+   ========================================== */
+
+input[type="file"]::file-selector-button {
+
+    border: none;
+
+    border-radius: 8px;
+
+    padding:
+        10px
+        16px;
+
+    margin-right: 12px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #2563eb,
+            #4f46e5
+        );
+
+    color: white;
+
+    font-size: 14px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.15s ease,
+        box-shadow 0.15s ease;
+}
+
+
+input[type="file"]::file-selector-button:hover {
+
+    transform:
+        translateY(-1px);
+
+    box-shadow:
+        0 3px 8px
+        rgba(37, 99, 235, 0.25);
+}
+
+
+    input[type="number"]:focus,
+    input[type="file"]:focus {
+
+        outline: none;
+
+        border-color: #2563eb;
+
+        box-shadow:
+            0 0 0 3px
+            rgba(37, 99, 235, 0.12);
+    }
+
+
+    /* ==========================================
+       OPZIONI
+       ========================================== */
+
+    .options {
+
+        display: grid;
+
+        grid-template-columns:
+            1fr 1fr;
+
+        gap: 20px;
+    }
+
+
+    /* ==========================================
+   SCHEDE DELLE OPZIONI
+   ========================================== */
+
+.option {
+
+    background:
+        linear-gradient(
+            135deg,
+            #f9fafb,
+            #f3f4f6
+        );
+
+    padding: 18px;
+
+    border-radius: 12px;
+
+    border:
+        1px solid
+        #e5e7eb;
+
+    transition:
+        border-color 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+
+    cursor: pointer;
+}
+
+
+.option:hover {
+
+    border-color:
+        #93c5fd;
+
+    transform:
+        translateY(-2px);
+
+    box-shadow:
+        0 5px 12px
+        rgba(37, 99, 235, 0.08);
+
+}
+
+
+.option label {
+
+    font-weight: normal;
+
+    margin-bottom: 0;
+
+    cursor: pointer;
+
+}
+
+
+    .option:hover {
+
+        border-color:
+            #c7d2fe;
+
+        transform:
+            translateY(-1px);
+    }
+
+
+    .option label {
+
+        font-weight: normal;
+
+        margin-bottom: 0;
+    }
+
+
+    /* ==========================================
+       CHECKBOX
+       ========================================== */
+
+    /* ==========================================
+   INTERRUTTORI ON / OFF
+   ========================================== */
+
+input[type="checkbox"] {
+
+    appearance: none;
+
+    width: 46px;
+    height: 24px;
+
+    background: #d1d5db;
+
+    border-radius: 999px;
+
+    position: relative;
+
+    cursor: pointer;
+
+    flex-shrink: 0;
+
+    transition:
+        background 0.2s ease,
+        box-shadow 0.2s ease;
+
+}
+
+
+/* Pallino dello switch */
+
+input[type="checkbox"]::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 18px;
+    height: 18px;
+
+    top: 3px;
+    left: 3px;
+
+    background: white;
+
+    border-radius: 50%;
+
+    box-shadow:
+        0 1px 3px
+        rgba(0, 0, 0, 0.2);
+
+    transition:
+        transform 0.2s ease;
+
+}
+
+
+/* Switch ATTIVO */
+
+input[type="checkbox"]:checked {
+
+    background:
+        #2563eb;
+
+}
+
+
+/* Spostiamo il pallino a destra */
+
+input[type="checkbox"]:checked::before {
+
+    transform:
+        translateX(22px);
+
+}
+
+
+/* Effetto quando ci passi sopra */
+
+input[type="checkbox"]:hover {
+
+    box-shadow:
+        0 0 0 3px
+        rgba(37, 99, 235, 0.10);
+
+}
+
+
+    /* ==========================================
+       BOTTONI
+       ========================================== */
+
+    button {
+
+        border: none;
+
+        border-radius: 10px;
+
+        padding:
+            13px
+            22px;
+
+        font-size: 16px;
+
+        font-weight: bold;
+
+        cursor: pointer;
+
+        transition:
+            transform 0.15s ease,
+            box-shadow 0.15s ease,
+            opacity 0.15s ease;
+    }
+
+
+    button:hover {
+
+        transform:
+            translateY(-1px);
+
+        box-shadow:
+            0 4px 10px
+            rgba(0, 0, 0, 0.12);
+    }
+
+
+    button:active {
+
+        transform:
+            translateY(0);
+    }
+
+
+    .primary {
+
+        background:
+            linear-gradient(
+                135deg,
+                #2563eb,
+                #4f46e5
+            );
+
+        color: white;
+
+        width: 100%;
+    }
+
+
+    .secondary {
+
+        background:
+            #e5e7eb;
+
+        color:
+            #1f2937;
+
+        margin-top: 15px;
+    }
+
+
+    /* ==========================================
+       NOME FILE
+       ========================================== */
+
+    #fileName {
+
+        color:
+            #16a34a;
+
+        font-weight: bold;
+
+        margin-top:
+            -10px;
+
+        margin-bottom:
+            15px;
+    }
+
+
+    /* ==========================================
+       ELEMENTI NASCOSTI
+       ========================================== */
+
+    .hidden {
+
+        display: none;
+    }
+
+
+    /* ==========================================
+       SEPARATORI
+       ========================================== */
+
+    hr {
+
+        border: none;
+
+        border-top:
+            1px solid
+            #e5e7eb;
+    }
+
+
+    /* ==========================================
+       RESPONSIVE
+       ========================================== */
+
+    @media (max-width: 700px) {
+
+        .options {
+
+            grid-template-columns:
+                1fr;
+        }
+
+
+        header {
+
+            padding:
+                30px
+                15px;
+        }
+
+
+        header h1 {
+
+            font-size:
+                28px;
+        }
+
+
+        header p {
+
+            font-size:
+                15px;
+        }
+
+
+        main {
+
+            margin:
+                20px
+                auto;
+
+            padding:
+                0
+                12px;
+        }
+
+
+        .card {
+
+            padding:
+                20px;
+        }
+    }
+
+/* ==========================================
+   NUMERI DELLE FASI
+   ========================================== */
+
+.step-number {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    width: 38px;
+
+    height: 38px;
+
+    margin-right: 10px;
+
+    border-radius: 50%;
+
+    background:
+        linear-gradient(
+            135deg,
+            #2563eb,
+            #4f46e5
+        );
+
+    color: white;
+
+    font-size: 18px;
+
+    font-weight: 800;
+
+    vertical-align: middle;
+
+    box-shadow:
+        0 3px 8px
+        rgba(37, 99, 235, 0.25);
+}
+
+/* ==========================================
+   INTESTAZIONE DELLE OPZIONI
+   ========================================== */
+
+.option-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.option-header label {
+    margin: 0;
+    font-weight: normal;
+}
+
+
+/* ==========================================
+   DESCRIZIONE DELLE OPZIONI
+   ========================================== */
+
+.option-description {
+    margin-top: 8px;
+    color: #4b5563;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+/* ==========================================
+   QUALITÀ DELLA DIVISIONE
+   ========================================== */
+
+.quality-box {
+
+    margin-bottom: 25px;
+
+    padding: 22px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #eff6ff,
+            #eef2ff
+        );
+
+    border:
+        1px solid
+        #c7d2fe;
+
+    border-radius: 14px;
+
+    box-shadow:
+        0 4px 12px
+        rgba(37, 99, 235, 0.08);
+
+}
+
+.quality-box strong {
+
+    font-size: 20px;
+
+    color: #1d4ed8;
+
+}
+
+/* ==========================================
+   CARD DEI GRUPPI
+   ========================================== */
+
+.group-card {
+
+    margin-bottom: 25px;
+
+    padding: 0;
+
+    background: white;
+
+    border:
+        1px solid
+        #e5e7eb;
+
+    border-radius: 14px;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 4px 12px
+        rgba(0, 0, 0, 0.06);
+
+}
+
+
+/* ==========================================
+   INTESTAZIONE GRUPPO
+   ========================================== */
+
+.group-header {
+
+    padding: 18px 20px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #2563eb,
+            #4f46e5
+        );
+
+    color: white;
+
+}
+
+
+.group-title {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 14px;
+
+}
+
+
+.group-number {
+
+    width: 42px;
+
+    height: 42px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background:
+        rgba(255, 255, 255, 0.2);
+
+    font-size: 20px;
+
+    font-weight: bold;
+
+}
+
+
+.group-header h3 {
+
+    margin: 0;
+
+    font-size: 20px;
+
+}
+
+
+.group-people {
+
+    display: block;
+
+    margin-top: 3px;
+
+    font-size: 13px;
+
+    opacity: 0.85;
+
+}
+
+
+/* ==========================================
+   STATISTICHE GRUPPO
+   ========================================== */
+
+.group-stats {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 1px;
+
+    margin: 0;
+
+    background: #e5e7eb;
+
+}
+
+
+.group-stats > div {
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 12px;
+
+    background: #f9fafb;
+
+}
+
+
+.group-stats span {
+
+    font-size: 17px;
+
+}
+
+
+.group-stats strong {
+
+    font-size: 18px;
+
+    margin-top: 2px;
+
+}
+
+
+.group-stats small {
+
+    margin-top: 2px;
+
+    color: #6b7280;
+
+    font-size: 11px;
+
+}
+
+/* ==========================================
+   ELENCO PERSONE
+   ========================================== */
+
+.people-list {
+
+    padding: 8px 20px 15px;
+
+}
+
+
+.person-row {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding: 10px 8px;
+
+    border-bottom:
+        1px solid
+        #f1f5f9;
+
+}
+
+
+.person-row:last-child {
+
+    border-bottom: none;
+
+}
+
+
+.person-name {
+
+    font-size: 15px;
+
+    color: #374151;
+
+}
+
+
+.person-info {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+}
+
+
+.person-score {
+
+    padding:
+        4px 8px;
+
+    border-radius: 6px;
+
+    background: #f3f4f6;
+
+    color: #4b5563;
+
+    font-size: 12px;
+
+    font-weight: bold;
+
+}
+
+
+.person-gender {
+
+    width: 26px;
+
+    height: 26px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 50%;
+
+    font-size: 12px;
+
+    font-weight: bold;
+
+}
+
+
+.person-gender.male {
+
+    background: #dbeafe;
+
+    color: #1d4ed8;
+
+}
+
+
+.person-gender.female {
+
+    background: #fce7f3;
+
+    color: #be185d;
+
+}
+
+/* ==========================================
+   INDICATORE QUALITÀ
+   ========================================== */
+
+.quality-title {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    font-size: 17px;
+
+    color: #1e3a8a;
+
+}
+
+
+.quality-title strong {
+
+    font-size: 24px;
+
+    color: #1d4ed8;
+
+}
+
+
+.quality-bar {
+
+    height: 10px;
+
+    margin-top: 14px;
+
+    background: #dbeafe;
+
+    border-radius: 999px;
+
+    overflow: hidden;
+
+}
+
+
+.quality-bar-fill {
+
+    height: 100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            #2563eb,
+            #4f46e5
+        );
+
+    border-radius: 999px;
+
+    transition: width 0.5s ease;
+
+}
+
+
+.quality-details {
+
+    display: flex;
+
+    gap: 20px;
+
+    margin-top: 12px;
+
+    font-size: 13px;
+
+    color: #64748b;
+
+}
+
+
+.quality-details strong {
+
+    color: #334155;
+
+}
+
+/* ==========================================
+   PULSANTI VINCOLI
+   ========================================== */
+
+.constraint-buttons {
+
+    display: grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap: 12px;
+
+    margin-top: 20px;
+
+}
+
+
+.constraint-buttons button {
+
+    width: 100%;
+
+    margin-top: 0;
+
+}
+
+
+/* Pulsante "non insieme" */
+
+.constraint-buttons .secondary {
+
+    background: #fee2e2;
+
+    color: #b91c1c;
+
+}
+
+
+.constraint-buttons .secondary:hover {
+
+    background: #fecaca;
+
+}
+
+
+/* Su schermi piccoli torniamo verticali */
+
+@media (max-width: 600px) {
+
+    .constraint-buttons {
+
+        grid-template-columns: 1fr;
+
+    }
+
+}
+
+.file-instruction {
+    margin-top: -5px;
+    margin-bottom: 20px;
+    padding: 12px 15px;
+    background: #eff6ff;
+    border-left: 4px solid #2563eb;
+    border-radius: 8px;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #374151;
+}
+
+.app-footer {
+    text-align: center;
+    margin: 30px 0 10px;
+    color: #9ca3af;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+.app-footer strong {
+    color: #6b7280;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>GroupMaker</h1>
+    <p>Creatore di gruppi equilibrati</p>
+</header>
+
+<main>
+
+    <div class="card">
+
+        <h2><span class="step-number">1</span> Carica l'elenco</h2>
+
+<p class="file-instruction">
+    📄 Il file Excel deve contenere, nella prima riga, le colonne:
+    <strong>Nome</strong>, <strong>Cognome</strong>,
+    <strong>Punteggio</strong> e <strong>Sesso</strong>,
+    in questo ordine.
+</p>
+
+        <label for="excelFile">
+            Seleziona il file Excel
+        </label>
+
+        <input
+            type="file"
+            id="excelFile"
+            accept=".xlsx,.xls"
+        >
+
+        <div id="fileName"></div>
+
+    </div>
+
+
+    <div class="card">
+
+        <h2><span class="step-number">2</span> Imposta i gruppi</h2>
+
+        <label for="groupNumber">
+            Numero di gruppi
+        </label>
+
+        <input
+            type="number"            
+            id="groupNumber"
+            min="2"
+            value="4"
+        >
+
+    </div>
+
+<div class="card hidden" id="constraintsCard">
+
+    <h2><span class="step-number">3</span> Gestisci persone e vincoli</h2>
+
+    <p>
+        Seleziona una o più persone per creare
+        vincoli tra loro.
+    </p>
+
+    <div id="peopleList"></div>
+
+    <div class="constraint-buttons">
+
+    <button
+        class="primary"
+        id="togetherButton"
+    >
+        🤝 DEVONO STARE INSIEME
+    </button>
+
+    <button
+        class="secondary"
+        id="separateButton"
+    >
+        🚫 NON DEVONO STARE INSIEME
+    </button>
+
+</div>
+
+    <hr style="margin: 25px 0;">
+
+    <h3>📌 Blocca una persona in un gruppo</h3>
+
+    <div class="options">
+
+        <div class="option">
+
+            <label for="personToLock">
+                Persona
+            </label>
+
+            <select
+                id="personToLock"
+                style="
+                    width:100%;
+                    padding:10px;
+                    border-radius:8px;
+                    border:1px solid #d1d5db;
+                "
+            >
+                <option value="">
+                    Seleziona persona
+                </option>
+            </select>
+
+        </div>
+
+
+        <div class="option">
+
+            <label for="groupToLock">
+                Gruppo
+            </label>
+
+            <select
+                id="groupToLock"
+                style="
+                    width:100%;
+                    padding:10px;
+                    border-radius:8px;
+                    border:1px solid #d1d5db;
+                "
+            >
+                <option value="">
+                    Seleziona gruppo
+                </option>
+            </select>
+
+        </div>
+
+    </div>
+
+
+    <button
+        class="primary"
+        id="lockButton"
+        style="margin-top:15px;"
+    >
+        📌 BLOCCA PERSONA
+    </button>
+
+
+    <hr style="margin: 25px 0;">
+
+    <h3>Vincoli attivi</h3>
+
+<div id="constraintsList"></div>
+
+<button
+    id="clearConstraintsButton"
+    type="button"
+>
+    🧹 Cancella tutti i vincoli
+</button>
+
+    <div id="constraintsList"></div>
+
+</div>
+
+    <div class="card">
+
+    <h2><span class="step-number">4</span> Criteri di equilibrio</h2>
+
+    <div class="options">
+
+        <div class="option">
+
+            <div class="option-header">
+
+                <label>
+                    ⚖️ Equilibrare il punteggio
+                </label>
+
+                <input
+                    type="checkbox"
+                    id="balanceScore"
+                    checked
+                >
+
+            </div>
+
+            <div class="option-description">
+
+                Usa il punteggio per distribuire
+                equamente la caratteristica tra i gruppi.
+
+            </div>
+
+        </div>
+
+
+        <div class="option">
+
+            <div class="option-header">
+
+                <label>
+                    👥 Equilibrare maschi e femmine
+                </label>
+
+                <input
+                    type="checkbox"
+                    id="balanceGender"
+                    checked
+                >
+
+            </div>
+
+            <div class="option-description">
+
+                Cerca di distribuire M/F
+                in modo equilibrato.
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+    <div class="card">
+
+        <h2><span class="step-number">5</span> Crea i gruppi</h2>
+
+        <button
+            class="primary"
+            id="createGroups"
+        >
+            CREA GRUPPI
+        </button>
+
+        <button
+            class="secondary hidden"
+            id="changeGroups"
+        >
+            🔄 CAMBIA GRUPPI
+        </button>
+
+    </div>
+
+
+    <div
+        class="card hidden"
+        id="results"
+    >
+
+        <h2>Risultati</h2>
+
+        <div id="groupsContainer"></div>
+
+    </div>
+
+<div class="app-footer">
+    <strong>GroupMaker</strong> · Versione 1.0
+    <br>
+    <span>Idea e sviluppo by Pytone</span>
+</div>
+
+</main>
+
+
+<script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
+
+<script>
+
+    const excelFile = document.getElementById("excelFile");
+    const fileName = document.getElementById("fileName");
+
+    let people = [];
+
+    let togetherGroups = [];
+    
+    let separatePairs = [];
+    
+    let lockedPeople = [];
+
+    let lastDisplayedGroups = null;
+
+
+       excelFile.addEventListener("change", function() {
+
+        if (excelFile.files.length === 0) {
+            return;
+        }
+
+        const file = excelFile.files[0];
+
+        fileName.textContent =
+            "⏳ Lettura del file...";
+
+        const reader = new FileReader();
+
+        reader.onload = function(event) {
+
+            try {
+
+                const data = new Uint8Array(event.target.result);
+
+                const workbook = XLSX.read(data, {
+                    type: "array"
+                });
+
+                const firstSheet =
+                    workbook.Sheets[workbook.SheetNames[0]];
+
+                const rows = XLSX.utils.sheet_to_json(
+                    firstSheet,
+                    { defval: "" }
+                );
+
+              people = rows.map((row, index) => {
+
+    return {
+        nome: String(row.NOME).trim(),
+        cognome: String(row.COGNOME).trim(),
+        punteggio: Number(row.PUNTEGGIO),
+        sesso: String(row.SESSO).trim().toUpperCase()
+    };
+
+});
+
+/*
+    ==========================================
+    NUOVO FILE → RESET DEI VINCOLI
+    ==========================================
+*/
+
+togetherGroups = [];
+
+separatePairs = [];
+
+lockedPeople = [];
+
+lastDisplayedGroups = null;
+
+
+/*
+    Aggiorniamo anche la visualizzazione
+    dei vincoli.
+*/
+
+updateConstraintsDisplay();
+
+/*
+    ==========================================
+    RESET DEI VINCOLI
+    ==========================================
+*/
+
+togetherGroups = [];
+
+separatePairs = [];
+
+lockedPeople = [];
+
+lastDisplayedGroups = null;
+
+
+fileName.textContent =
+    "✓ File letto correttamente: " +
+    people.length +
+    " persone";
+
+showPeople();
+
+console.log("Persone caricate:", people);
+
+            } catch (error) {
+
+                console.error(error);
+
+                fileName.textContent =
+                    "❌ Errore nella lettura del file.";
+
+                people = [];
+
+            }
+
+        };
+
+        reader.readAsArrayBuffer(file);
+
+    });
+
+function showPeople() {
+
+    
+    const constraintsCard =
+        document.getElementById("constraintsCard");
+
+    const peopleList =
+        document.getElementById("peopleList");
+
+    const personToLock =
+        document.getElementById("personToLock");
+
+    const groupToLock =
+        document.getElementById("groupToLock");
+
+
+    peopleList.innerHTML = "";
+
+    personToLock.innerHTML =
+        '<option value="">Seleziona persona</option>';
+
+
+    people.forEach((person, index) => {
+
+        const row =
+            document.createElement("div");
+
+        row.style.padding = "10px";
+
+        row.style.marginBottom = "6px";
+
+        row.style.background = "#f9fafb";
+
+        row.style.borderRadius = "8px";
+
+        row.style.border =
+            "1px solid #e5e7eb";
+
+
+        row.innerHTML = `
+            <label style="display:flex; align-items:center; gap:10px; margin:0;">
+
+                <input
+                    type="checkbox"
+                    class="personCheckbox"
+                    value="${index}"
+                >
+
+                <span>
+                    <strong>
+                        ${person.nome} ${person.cognome}
+                    </strong>
+
+                    — Punteggio: ${person.punteggio}
+                    — ${person.sesso}
+                </span>
+
+            </label>
+        `;
+
+
+        peopleList.appendChild(row);
+
+
+        const option =
+            document.createElement("option");
+
+        option.value = index;
+
+        option.textContent =
+            person.nome + " " + person.cognome;
+
+        personToLock.appendChild(option);
+
+    });
+
+
+    groupToLock.innerHTML =
+        '<option value="">Seleziona gruppo</option>';
+
+
+    const numberOfGroups =
+        Number(
+            document.getElementById("groupNumber").value
+        );
+
+
+    for (
+        let i = 1;
+        i <= numberOfGroups;
+        i++
+    ) {
+
+        const option =
+            document.createElement("option");
+
+        option.value = i;
+
+        option.textContent =
+            "Gruppo " + i;
+
+        groupToLock.appendChild(option);
+
+    }
+
+
+    constraintsCard.classList.remove("hidden");
+
+}
+
+document
+    .getElementById("groupNumber")
+    .addEventListener(
+        "change",
+        function() {
+
+            if (people.length > 0) {
+                showPeople();
+            }
+
+        }
+    );
+
+const togetherButton =
+    document.getElementById("togetherButton");
+
+const separateButton =
+    document.getElementById("separateButton");
+
+const lockButton =
+    document.getElementById("lockButton");
+
+const constraintsList =
+    document.getElementById("constraintsList");
+
+const createGroupsBtn =
+    document.getElementById("createGroups");
+
+const clearConstraintsButton =
+    document.getElementById("clearConstraintsButton");
+
+    function updateConstraintsDisplay() {
+
+    constraintsList.innerHTML = "";
+
+
+    if (
+        togetherGroups.length === 0 &&
+        separatePairs.length === 0 &&
+        lockedPeople.length === 0
+    ) {
+
+        constraintsList.innerHTML =
+            "<p>Nessun vincolo impostato.</p>";
+
+        return;
+    }
+
+
+    /*
+        PERSONE INSIEME
+    */
+
+    togetherGroups.forEach(
+        (group, index) => {
+
+            const names =
+                group.map(
+                    personIndex =>
+                        people[personIndex].nome +
+                        " " +
+                        people[personIndex].cognome
+                );
+
+
+            const div =
+                document.createElement("div");
+
+            div.style.marginBottom = "10px";
+
+
+            div.innerHTML =
+                "🔗 <strong>Devono stare insieme:</strong> " +
+                names.join(" + ") +
+                " ";
+
+
+            const removeButton =
+                document.createElement("button");
+
+            removeButton.textContent =
+                "🗑️";
+
+            removeButton.style.padding =
+                "5px 8px";
+
+            removeButton.onclick =
+                function() {
+
+                    togetherGroups.splice(index, 1);
+
+                    updateConstraintsDisplay();
+
+                };
+
+
+            div.appendChild(removeButton);
+
+            constraintsList.appendChild(div);
+
+        }
+    );
+
+
+    /*
+        PERSONE SEPARATE
+    */
+
+    separatePairs.forEach(
+        (pair, index) => {
+
+            const person1 =
+                people[pair[0]];
+
+            const person2 =
+                people[pair[1]];
+
+
+            const div =
+                document.createElement("div");
+
+            div.style.marginBottom =
+                "10px";
+
+
+            div.innerHTML =
+                "🚫 <strong>Non devono stare insieme:</strong> " +
+                person1.nome + " " +
+                person1.cognome +
+                " ↔ " +
+                person2.nome + " " +
+                person2.cognome +
+                " ";
+
+
+            const removeButton =
+                document.createElement("button");
+
+            removeButton.textContent =
+                "🗑️";
+
+            removeButton.style.padding =
+                "5px 8px";
+
+
+            removeButton.onclick =
+                function() {
+
+                    separatePairs.splice(index, 1);
+
+                    updateConstraintsDisplay();
+
+                };
+
+
+            div.appendChild(removeButton);
+
+            constraintsList.appendChild(div);
+
+        }
+    );
+
+
+    /*
+        PERSONE BLOCCATE
+    */
+
+    lockedPeople.forEach(
+        (lock, index) => {
+
+            const person =
+                people[lock.personIndex];
+
+
+            const div =
+                document.createElement("div");
+
+            div.style.marginBottom =
+                "10px";
+
+
+            div.innerHTML =
+                "📌 <strong>" +
+                person.nome + " " +
+                person.cognome +
+                "</strong> → Gruppo " +
+                lock.group +
+                " ";
+
+
+            const removeButton =
+                document.createElement("button");
+
+            removeButton.textContent =
+                "🗑️";
+
+            removeButton.style.padding =
+                "5px 8px";
+
+
+            removeButton.onclick =
+                function() {
+
+                    lockedPeople.splice(index, 1);
+
+                    updateConstraintsDisplay();
+
+                };
+
+
+            div.appendChild(removeButton);
+
+            constraintsList.appendChild(div);
+
+        }
+    );
+
+}
+    document.getElementById("createGroups");
+
+const changeGroupsButton =
+    document.getElementById("changeGroups");
+
+const results =
+    document.getElementById("results");
+
+const groupsContainer =
+    document.getElementById("groupsContainer");
+
+
+function validateConstraints() {
+
+    /*
+        ==========================================
+        1. DATI DI BASE
+        ==========================================
+    */
+
+    const numberOfGroups =
+        Number(
+            document.getElementById(
+                "groupNumber"
+            ).value
+        );
+
+
+    if (
+        !numberOfGroups ||
+        numberOfGroups < 2
+    ) {
+
+        return {
+            valid: false,
+            message:
+                "Inserisci un numero di gruppi valido."
+        };
+
+    }
+
+
+    
+
+    /*
+    ==========================================
+    DIMENSIONE DEI GRUPPI
+    ==========================================
+    
+    Alcuni gruppi potranno avere una persona
+    in più rispetto agli altri.
+*/
+
+const basePeoplePerGroup =
+    Math.floor(
+        people.length / numberOfGroups
+    );
+
+
+const extraPeople =
+    people.length %
+    numberOfGroups;
+
+    const groupCapacities =
+    Array.from(
+        {
+            length: numberOfGroups
+        },
+        (_, index) =>
+            basePeoplePerGroup +
+            (
+                index < extraPeople
+                    ? 1
+                    : 0
+            )
+    );
+
+/*
+    Esempio:
+    12 persone / 5 gruppi
+
+    base = 2
+    extra = 2
+
+    quindi:
+    3, 3, 2, 2, 2
+*/
+
+
+
+    /*
+        ==========================================
+        2. CREIAMO I BLOCCHI "INSIEME"
+        ==========================================
+    */
+
+    const parent =
+        people.map(
+            (_, index) => index
+        );
+
+
+    function find(index) {
+
+        if (
+            parent[index] !== index
+        ) {
+
+            parent[index] =
+                find(parent[index]);
+
+        }
+
+        return parent[index];
+
+    }
+
+
+    function union(a, b) {
+
+        const rootA =
+            find(a);
+
+        const rootB =
+            find(b);
+
+
+        if (
+            rootA !== rootB
+        ) {
+
+            parent[rootB] =
+                rootA;
+
+        }
+
+    }
+
+
+    togetherGroups.forEach(
+        group => {
+
+            if (
+                group.length >= 2
+            ) {
+
+                const first =
+                    group[0];
+
+
+                for (
+                    let i = 1;
+                    i < group.length;
+                    i++
+                ) {
+
+                    union(
+                        first,
+                        group[i]
+                    );
+
+                }
+
+            }
+
+        }
+    );
+
+
+
+    /*
+        ==========================================
+        3. CREIAMO I BLOCCHI FINALI
+        ==========================================
+    */
+
+    const components =
+        new Map();
+
+
+    people.forEach(
+        (_, index) => {
+
+            const root =
+                find(index);
+
+
+            if (
+                !components.has(root)
+            ) {
+
+                components.set(
+                    root,
+                    []
+                );
+
+            }
+
+
+            components
+                .get(root)
+                .push(index);
+
+        }
+    );
+
+
+
+    /*
+        ==========================================
+        4. CONTROLLO:
+        INSIEME + NON INSIEME
+        ==========================================
+    */
+
+    for (
+        const pair of separatePairs
+    ) {
+
+        const personA =
+            pair[0];
+
+        const personB =
+            pair[1];
+
+
+        if (
+            find(personA) ===
+            find(personB)
+        ) {
+
+            const nameA =
+                people[personA].nome +
+                " " +
+                people[personA].cognome;
+
+
+            const nameB =
+                people[personB].nome +
+                " " +
+                people[personB].cognome;
+
+
+            return {
+
+                valid: false,
+
+                message:
+                    "Vincoli incompatibili.\n\n" +
+                    nameA +
+                    " e " +
+                    nameB +
+                    " hanno un vincolo DEVONO STARE INSIEME " +
+                    "e contemporaneamente NON DEVONO STARE INSIEME."
+
+            };
+
+        }
+
+    }
+
+
+
+    /*
+        ==========================================
+        5. CONTROLLO:
+        BLOCCHI TROPPO GRANDI
+        ==========================================
+    */
+
+    for (
+        const component of components.values()
+    ) {
+
+        if (
+    component.length >
+    Math.max(...groupCapacities)
+) {
+
+            const names =
+                component.map(
+                    index =>
+                        people[index].nome +
+                        " " +
+                        people[index].cognome
+                );
+
+
+            return {
+
+                valid: false,
+
+                message:
+                    "Impossibile creare i gruppi.\n\n" +
+                    "Queste persone devono stare insieme:\n\n" +
+                    names.join("\n") +
+                    "\n\n" +
+                    "Il gruppo può contenere massimo " +
+                    Math.max(...groupCapacities) +
+                    " persone."
+
+            };
+
+        }
+
+    }
+
+
+
+    /*
+        ==========================================
+        6. CONTROLLO:
+        PERSONE BLOCCATE IN GRUPPI DIVERSI
+        ==========================================
+    */
+
+    for (
+        const component of components.values()
+    ) {
+
+        const locks =
+            component
+                .map(
+                    personIndex =>
+                        lockedPeople.find(
+                            lock =>
+                                lock.personIndex ===
+                                personIndex
+                        )
+                )
+                .filter(
+                    lock =>
+                        lock !== undefined
+                );
+
+
+        if (
+            locks.length > 1
+        ) {
+
+            const firstGroup =
+                locks[0].group;
+
+
+            const conflictingLock =
+                locks.find(
+                    lock =>
+                        lock.group !==
+                        firstGroup
+                );
+
+
+            if (
+                conflictingLock
+            ) {
+
+                const personA =
+                    people[
+                        locks[0].personIndex
+                    ];
+
+
+                const personB =
+                    people[
+                        conflictingLock.personIndex
+                    ];
+
+
+                return {
+
+                    valid: false,
+
+                    message:
+                        "Vincoli incompatibili.\n\n" +
+                        personA.nome +
+                        " " +
+                        personA.cognome +
+                        " e " +
+                        personB.nome +
+                        " " +
+                        personB.cognome +
+                        " devono stare insieme, " +
+                        "ma sono stati bloccati in gruppi diversi:\n\n" +
+                        "• " +
+                        personA.nome +
+                        " → Gruppo " +
+                        locks[0].group +
+                        "\n" +
+                        "• " +
+                        personB.nome +
+                        " → Gruppo " +
+                        conflictingLock.group
+
+                };
+
+            }
+
+        }
+
+    }
+
+
+
+    /*
+        ==========================================
+        7. CONTROLLO:
+        TROPPE PERSONE BLOCCATE
+        NELLO STESSO GRUPPO
+        ==========================================
+    */
+
+    for (
+        let group = 1;
+        group <= numberOfGroups;
+        group++
+    ) {
+
+        let lockedCount = 0;
+
+        const lockedNames = [];
+
+
+        for (
+            const component of components.values()
+        ) {
+
+            const componentLock =
+                component.find(
+                    personIndex => {
+
+                        const lock =
+                            lockedPeople.find(
+                                item =>
+                                    item.personIndex ===
+                                    personIndex
+                            );
+
+                        return (
+                            lock &&
+                            lock.group ===
+                            group
+                        );
+
+                    }
+                );
+
+
+            if (
+                componentLock !== undefined
+            ) {
+
+                lockedCount +=
+                    component.length;
+
+
+                component.forEach(
+                    personIndex => {
+
+                        lockedNames.push(
+                            people[personIndex].nome +
+                            " " +
+                            people[personIndex].cognome
+                        );
+
+                    }
+                );
+
+            }
+
+        }
+
+
+        if (
+    lockedCount >
+    groupCapacities[group - 1]
+) {
+
+            return {
+
+                valid: false,
+
+                message:
+                    "Impossibile creare i gruppi.\n\n" +
+                    "Il Gruppo " +
+                    group +
+                    " ha troppe persone bloccate.\n\n" +
+                    "Persone coinvolte:\n\n" +
+                    lockedNames.join("\n") +
+                    "\n\n" +
+                    "Il Gruppo " +
+group +
+" può contenere massimo " +
+groupCapacities[group - 1] +
+" persone."
+
+            };
+
+        }
+
+    }
+
+
+
+/*
+    ==========================================
+    8. CONTROLLO:
+    DUE PERSONE NON DEVONO STARE INSIEME
+    MA SONO BLOCCATE NELLO STESSO GRUPPO
+    ==========================================
+*/
+
+for (
+    const pair of separatePairs
+) {
+
+    const personA =
+        pair[0];
+
+    const personB =
+        pair[1];
+
+
+    const lockA =
+        lockedPeople.find(
+            lock =>
+                Number(lock.personIndex) ===
+                Number(personA)
+        );
+
+
+    const lockB =
+        lockedPeople.find(
+            lock =>
+                Number(lock.personIndex) ===
+                Number(personB)
+        );
+
+
+    /*
+        Se entrambe sono bloccate,
+        controlliamo che non siano
+        nello stesso gruppo.
+    */
+
+    if (
+        lockA &&
+        lockB &&
+        Number(lockA.group) ===
+        Number(lockB.group)
+    ) {
+
+        const nameA =
+            people[personA].nome +
+            " " +
+            people[personA].cognome;
+
+
+        const nameB =
+            people[personB].nome +
+            " " +
+            people[personB].cognome;
+
+
+        return {
+
+            valid: false,
+
+            message:
+                "Vincoli incompatibili.\n\n" +
+                nameA +
+                " e " +
+                nameB +
+                " NON DEVONO STARE INSIEME,\n\n" +
+                "ma sono entrambi bloccati nel " +
+                "Gruppo " +
+                lockA.group +
+                "."
+
+        };
+
+    }
+
+}
+
+
+
+    /*
+        ==========================================
+        9. TUTTO OK
+        ==========================================
+    */
+
+    return {
+
+        valid: true
+
+    };
+
+}
+
+function calculateScore(
+    groups,
+    balanceScore,
+    balanceGender,
+    numberOfGroups
+) {
+
+    /*
+        ==========================================
+        1. EQUILIBRIO DEI PUNTEGGI
+        ==========================================
+    */
+
+    const averages =
+        groups.map(
+            group => {
+
+                const total =
+                    group.reduce(
+                        (sum, person) =>
+                            sum +
+                            Number(person.punteggio),
+                        0
+                    );
+
+                return total / group.length;
+
+            }
+        );
+
+
+    const average =
+        averages.reduce(
+            (a, b) =>
+                a + b,
+            0
+        ) /
+        averages.length;
+
+
+    let scorePenalty = 0;
+
+
+    if (balanceScore && average > 0) {
+
+        averages.forEach(
+            groupAverage => {
+
+                const difference =
+                    (groupAverage - average) /
+                    average;
+
+                scorePenalty +=
+                    difference * difference;
+
+            }
+        );
+
+
+        scorePenalty /=
+            averages.length;
+
+    }
+
+
+    /*
+        ==========================================
+        2. EQUILIBRIO MASCHI / FEMMINE
+        ==========================================
+    */
+
+    let genderPenalty = 0;
+
+
+    if (balanceGender) {
+
+        const totalM =
+            people.filter(
+                person =>
+                    person.sesso === "M"
+            ).length;
+
+
+        const totalF =
+            people.filter(
+                person =>
+                    person.sesso === "F"
+            ).length;
+
+
+        const idealM =
+            totalM /
+            numberOfGroups;
+
+
+        const idealF =
+            totalF /
+            numberOfGroups;
+
+
+        groups.forEach(
+            group => {
+
+                const males =
+                    group.filter(
+                        person =>
+                            person.sesso === "M"
+                    ).length;
+
+
+                const females =
+                    group.filter(
+                        person =>
+                            person.sesso === "F"
+                    ).length;
+
+
+                if (idealM > 0) {
+
+                    const differenceM =
+                        (males - idealM) /
+                        idealM;
+
+                    genderPenalty +=
+                        differenceM *
+                        differenceM;
+
+                }
+
+
+                if (idealF > 0) {
+
+                    const differenceF =
+                        (females - idealF) /
+                        idealF;
+
+                    genderPenalty +=
+                        differenceF *
+                        differenceF;
+
+                }
+
+            }
+        );
+
+
+        genderPenalty /=
+            numberOfGroups * 2;
+
+    }
+
+
+    /*
+        ==========================================
+        3. CONVERTIAMO GLI ERRORI IN QUALITÀ %
+        ==========================================
+
+        Penalty = 0
+        significa equilibrio perfetto.
+
+        Più aumenta la penalty,
+        peggiore è la divisione.
+    */
+
+
+    const scoreQuality =
+        balanceScore
+            ? Math.max(
+                0,
+                100 *
+                (1 - scorePenalty)
+            )
+            : null;
+
+
+    const genderQuality =
+        balanceGender
+            ? Math.max(
+                0,
+                100 *
+                (1 - genderPenalty)
+            )
+            : null;
+
+
+    /*
+        ==========================================
+        4. QUALITÀ COMPLESSIVA
+        ==========================================
+    */
+
+    let finalScore = 0;
+
+
+    if (
+        balanceScore &&
+        balanceGender
+    ) {
+
+        finalScore =
+            (scorePenalty * 0.70) +
+            (genderPenalty * 0.30);
+
+    } else if (balanceScore) {
+
+        finalScore =
+            scorePenalty;
+
+    } else if (balanceGender) {
+
+        finalScore =
+            genderPenalty;
+
+    }
+
+
+    const overallQuality =
+        Math.max(
+            0,
+            100 *
+            (1 - finalScore)
+        );
+
+
+    /*
+        ==========================================
+        5. RESTITUIAMO TUTTI I DATI
+        ==========================================
+    */
+
+    return {
+
+        finalScore:
+
+            finalScore,
+
+        scoreQuality:
+
+            scoreQuality,
+
+        genderQuality:
+
+            genderQuality,
+
+        overallQuality:
+
+            overallQuality
+
+    };
+
+}
+
+function createGroups() {
+
+    /*
+        Prima controlliamo che siano
+        state caricate delle persone.
+    */
+
+    if (people.length === 0) {
+
+        alert(
+            "Prima devi caricare un file Excel."
+        );
+
+        return;
+
+    }
+
+
+    /*
+        Ora controlliamo che tutti
+        i vincoli siano compatibili.
+    */
+
+    const numberOfGroups =
+    Number(
+        document.getElementById("groupNumber").value
+    );
+
+
+if (
+    !numberOfGroups ||
+    numberOfGroups < 2
+) {
+
+    alert(
+        "Inserisci un numero di gruppi valido."
+    );
+
+    return;
+
+}
+
+const basePeoplePerGroup =
+    Math.floor(
+        people.length / numberOfGroups
+    );
+
+
+const extraPeople =
+    people.length %
+    numberOfGroups;
+
+
+/*
+    Dimensione prevista per ogni gruppo.
+
+    Esempio:
+    12 persone / 5 gruppi
+    → 3, 3, 2, 2, 2
+
+    101 persone / 8 gruppi
+    → 13, 13, 13, 13, 13, 12, 12, 12
+*/
+
+const groupCapacities =
+    Array.from(
+        {
+            length: numberOfGroups
+        },
+        (_, index) =>
+            basePeoplePerGroup +
+            (
+                index < extraPeople
+                    ? 1
+                    : 0
+            )
+    );
+
+/*
+    Controlliamo che i gruppi
+    non siano più numerosi delle persone.
+*/
+
+if (
+    numberOfGroups > people.length
+) {
+
+    alert(
+        "Non puoi creare più gruppi delle persone disponibili."
+    );
+
+    return;
+
+}
+
+
+/*
+    Ora possiamo controllare i vincoli,
+    perché numberOfGroups e peoplePerGroup
+    sono già disponibili.
+*/
+
+const validation =
+    validateConstraints();
+
+
+if (!validation.valid) {
+
+    alert(
+        "⚠️ " +
+        validation.message
+    );
+
+    return;
+
+}
+
+
+    const balanceScore =
+        document.getElementById("balanceScore").checked;
+
+
+    const balanceGender =
+        document.getElementById("balanceGender").checked;
+
+
+    /*
+    ==========================================
+    DIMENSIONE DEI GRUPPI
+    ==========================================
+    
+    Se le persone non sono divisibili
+    esattamente per il numero di gruppi,
+    alcuni gruppi avranno una persona in più.
+    
+    Esempio:
+    12 persone / 5 gruppi
+    → 3, 3, 2, 2, 2
+    
+    101 persone / 8 gruppi
+    → 13, 13, 13, 13, 13, 12, 12, 12
+*/
+
+
+
+
+    /*
+        ==========================================
+        1. CREIAMO I BLOCCHI "DEVONO STARE INSIEME"
+        ==========================================
+    */
+
+
+    const parent =
+        people.map(
+            (_, index) => index
+        );
+
+
+    function find(index) {
+
+        if (parent[index] !== index) {
+
+            parent[index] =
+                find(parent[index]);
+
+        }
+
+        return parent[index];
+
+    }
+
+
+    function union(a, b) {
+
+        const rootA = find(a);
+
+        const rootB = find(b);
+
+
+        if (rootA !== rootB) {
+
+            parent[rootB] = rootA;
+
+        }
+
+    }
+
+
+    
+
+    togetherGroups.forEach(group => {
+
+        if (group.length >= 2) {
+
+            const first =
+                group[0];
+
+
+            for (
+                let i = 1;
+                i < group.length;
+                i++
+            ) {
+
+                union(
+                    first,
+                    group[i]
+                );
+
+            }
+
+        }
+
+    });
+
+
+
+    /*
+        Creiamo le unità finali.
+    */
+
+
+    const unitsMap = new Map();
+
+
+    people.forEach(
+        (_, index) => {
+
+            const root =
+                find(index);
+
+
+            if (!unitsMap.has(root)) {
+
+                unitsMap.set(
+                    root,
+                    []
+                );
+
+            }
+
+
+            unitsMap.get(root).push(
+                index
+            );
+
+        }
+    );
+
+
+    const units =
+        Array.from(
+            unitsMap.values()
+        ).map(
+            memberIndexes => {
+
+                return {
+
+                    people:
+                        memberIndexes,
+
+                    size:
+                        memberIndexes.length,
+
+                    score:
+                        memberIndexes.reduce(
+                            (sum, index) =>
+                                sum +
+                                people[index].punteggio,
+                            0
+                        ),
+
+                    males:
+                        memberIndexes.filter(
+                            index =>
+                                people[index].sesso === "M"
+                        ).length,
+
+                    females:
+                        memberIndexes.filter(
+                            index =>
+                                people[index].sesso === "F"
+                        ).length
+
+                };
+
+            }
+        );
+
+
+
+    /*
+        ==========================================
+        2. CONTROLLIAMO SE UN BLOCCO È TROPPO GRANDE
+        ==========================================
+    */
+
+    const maxGroupSize =
+    Math.max(
+        ...groupCapacities
+    );
+
+
+const impossibleUnit =
+    units.find(
+        unit =>
+            unit.size >
+            maxGroupSize
+    );
+
+
+    if (impossibleUnit) {
+
+        const names =
+            impossibleUnit.people.map(
+                index =>
+                    people[index].nome +
+                    " " +
+                    people[index].cognome
+            );
+
+
+        alert(
+            "Impossibile creare i gruppi.\n\n" +
+            "Queste persone devono stare insieme:\n\n" +
+            names.join("\n") +
+            "\n\n" +
+            "Il gruppo può contenere solo " +
+            maxGroupSize +
+            " persone."
+        );
+
+
+        return;
+    }
+
+
+
+    /*
+        ==========================================
+        3. FUNZIONE PER VALUTARE UNA SOLUZIONE
+        ==========================================
+    */
+
+
+
+
+
+    /*
+        ==========================================
+        4. CREIAMO UNA SOLUZIONE CASUALE VALIDA
+        ==========================================
+    */
+
+
+function generateValidGroups() {
+
+    /*
+        ==========================================
+        1. ORDINIAMO LE UNITÀ
+        ==========================================
+    */
+
+    const shuffledUnits =
+        [...units].sort(
+            (a, b) => {
+
+                if (b.size !== a.size) {
+
+                    return b.size - a.size;
+
+                }
+
+                return Math.random() - 0.5;
+
+            }
+        );
+
+
+    /*
+        ==========================================
+        2. CREIAMO I GRUPPI VUOTI
+        ==========================================
+    */
+
+    const groups =
+        Array.from(
+            {
+                length: numberOfGroups
+            },
+            () => []
+        );
+
+
+    /*
+    ==========================================
+    CAPACITÀ DEI GRUPPI
+    ==========================================
+
+    I primi gruppi ricevono una persona in più
+    quando la divisione non è perfetta.
+
+    Esempio:
+    12 persone / 5 gruppi
+
+    Gruppo 1 → 3
+    Gruppo 2 → 3
+    Gruppo 3 → 2
+    Gruppo 4 → 2
+    Gruppo 5 → 2
+*/
+
+const basePeoplePerGroup =
+    Math.floor(
+        people.length / numberOfGroups
+    );
+
+
+const extraPeople =
+    people.length %
+    numberOfGroups;
+
+
+const groupCapacities =
+    Array.from(
+        {
+            length: numberOfGroups
+        },
+        (_, index) =>
+            basePeoplePerGroup +
+            (
+                index < extraPeople
+                    ? 1
+                    : 0
+            )
+    );
+
+
+/*
+    Persone ancora disponibili
+    in ciascun gruppo.
+*/
+
+const remaining =
+    [...groupCapacities];
+
+
+    /*
+        ==========================================
+        3. FUNZIONE PER TROVARE IL GRUPPO
+        BLOCCATO DI UNA UNITÀ
+        ==========================================
+    */
+
+    function getLockedGroup(unit) {
+
+        const locks =
+            unit.people
+                .map(
+                    personIndex =>
+                        lockedPeople.find(
+                            lock =>
+                                lock.personIndex ===
+                                personIndex
+                        )
+                )
+                .filter(
+                    lock => lock !== undefined
+                );
+
+
+        /*
+            Nessuna persona dell'unità
+            è bloccata.
+        */
+
+        if (locks.length === 0) {
+
+            return null;
+
+        }
+
+
+        /*
+            Controlliamo che tutti i
+            blocchi siano nello stesso gruppo.
+        */
+
+        const firstGroup =
+            locks[0].group;
+
+
+        const conflict =
+            locks.some(
+                lock =>
+                    lock.group !== firstGroup
+            );
+
+
+        if (conflict) {
+
+            return -1;
+
+        }
+
+
+        return firstGroup;
+
+    }
+
+
+
+    /*
+        ==========================================
+        4. FUNZIONE PER CONTROLLARE
+        I VINCOLI "NON INSIEME"
+        ==========================================
+    */
+
+    function unitHasSeparateConflict(
+    unit,
+    groupIndex
+) {
+
+    /*
+        Controlliamo ogni persona dell'unità
+        rispetto alle persone già presenti
+        nel gruppo.
+    */
+
+    for (
+        const personIndex of unit.people
+    ) {
+
+        /*
+            Cerchiamo eventuali vincoli
+            "NON DEVONO STARE INSIEME"
+            che coinvolgono questa persona.
+        */
+
+        for (
+            const pair of separatePairs
+        ) {
+
+            let otherPerson = null;
+
+
+            if (
+                pair[0] === personIndex
+            ) {
+
+                otherPerson = pair[1];
+
+            } else if (
+                pair[1] === personIndex
+            ) {
+
+                otherPerson = pair[0];
+
+            }
+
+
+            /*
+                Se questa coppia non riguarda
+                la persona che stiamo controllando,
+                passiamo alla successiva.
+            */
+
+            if (
+                otherPerson === null
+            ) {
+
+                continue;
+
+            }
+
+
+            /*
+                Controlliamo se l'altra persona
+                è già presente nel gruppo.
+            */
+
+            const conflict =
+                groups[groupIndex].some(
+                    existingUnit =>
+                        existingUnit.people.includes(
+                            otherPerson
+                        )
+                );
+
+
+            if (conflict) {
+
+                return true;
+
+            }
+
+        }
+
+    }
+
+
+    return false;
+
+}
+
+
+
+    /*
+        ==========================================
+        5. INSERIAMO PRIMA LE UNITÀ BLOCCATE
+        ==========================================
+    */
+
+    const unlockedUnits = [];
+
+
+    for (
+        const unit of shuffledUnits
+    ) {
+
+        const lockedGroup =
+            getLockedGroup(unit);
+
+
+        /*
+            L'unità non contiene persone
+            bloccate: la lasciamo da inserire
+            normalmente.
+        */
+
+        if (lockedGroup === null) {
+
+            unlockedUnits.push(unit);
+
+            continue;
+
+        }
+
+
+        /*
+            -1 significa che due persone
+            dello stesso blocco sono state
+            bloccate in gruppi diversi.
+        */
+
+        if (lockedGroup === -1) {
+
+            return null;
+
+        }
+
+
+        /*
+            JavaScript usa gli indici da 0,
+            mentre i nostri gruppi sono
+            numerati da 1.
+        */
+
+        const groupIndex =
+            lockedGroup - 1;
+
+
+        /*
+            Controlliamo che il gruppo
+            esista.
+        */
+
+        if (
+            groupIndex < 0 ||
+            groupIndex >= numberOfGroups
+        ) {
+
+            return null;
+
+        }
+
+
+        /*
+            Controlliamo lo spazio disponibile.
+        */
+
+        if (
+            remaining[groupIndex] <
+            unit.size
+        ) {
+
+            return null;
+
+        }
+
+
+        /*
+            Controlliamo i vincoli
+            NON DEVONO STARE INSIEME.
+        */
+
+        if (
+            unitHasSeparateConflict(
+                unit,
+                groupIndex
+            )
+        ) {
+
+            return null;
+
+        }
+
+
+        /*
+            Inseriamo definitivamente
+            l'unità nel gruppo bloccato.
+        */
+
+        groups[groupIndex].push(
+            unit
+        );
+
+
+        remaining[groupIndex] -=
+            unit.size;
+
+    }
+
+
+
+    /*
+        ==========================================
+        6. FUNZIONE RICORSIVA PER LE UNITÀ
+        NON BLOCCATE
+        ==========================================
+    */
+
+    function placeUnit(
+        unitIndex
+    ) {
+
+        if (
+            unitIndex ===
+            unlockedUnits.length
+        ) {
+
+            return true;
+
+        }
+
+
+        const unit =
+            unlockedUnits[
+                unitIndex
+            ];
+
+
+        let possibleGroups =
+            [];
+
+
+        /*
+            Cerchiamo tutti i gruppi
+            nei quali l'unità può entrare.
+        */
+
+        for (
+            let g = 0;
+            g < numberOfGroups;
+            g++
+        ) {
+
+            /*
+                Controllo spazio.
+            */
+
+            if (
+                remaining[g] <
+                unit.size
+            ) {
+
+                continue;
+
+            }
+
+
+            /*
+                Controllo vincolo
+                NON DEVONO STARE INSIEME.
+            */
+
+            if (
+                unitHasSeparateConflict(
+                    unit,
+                    g
+                )
+            ) {
+
+                continue;
+
+            }
+
+
+            possibleGroups.push(g);
+
+        }
+
+
+        /*
+            Mescoliamo i gruppi per ottenere
+            combinazioni diverse quando
+            premiamo CAMBIA.
+        */
+
+        possibleGroups.sort(
+            () =>
+                Math.random() - 0.5
+        );
+
+
+        
+
+        for (
+            const g of possibleGroups
+        ) {
+
+            
+            /*
+                Inseriamo temporaneamente
+                l'unità.
+            */
+
+            groups[g].push(
+                unit
+            );
+
+
+            remaining[g] -=
+                unit.size;
+
+
+            /*
+                Proviamo a inserire
+                le unità successive.
+            */
+
+            if (
+                placeUnit(
+                    unitIndex + 1
+                )
+            ) {
+
+                return true;
+
+            }
+
+
+            /*
+                Se non funziona,
+                annulliamo la scelta.
+            */
+
+            remaining[g] +=
+                unit.size;
+
+
+            groups[g].pop();
+
+        }
+
+
+        return false;
+
+    }
+
+
+
+    /*
+        ==========================================
+        7. COMPLETIAMO I GRUPPI
+        ==========================================
+    */
+
+    const success =
+        placeUnit(0);
+
+
+    if (!success) {
+
+        return null;
+
+    }
+
+
+
+    /*
+        ==========================================
+        8. CONTROLLIAMO CHE OGNI GRUPPO
+        ABBIA ESATTAMENTE IL NUMERO
+        DI PERSONE RICHIESTO
+        ==========================================
+    */
+
+    for (
+        let g = 0;
+        g < numberOfGroups;
+        g++
+    ) {
+
+        const totalPeople =
+            groups[g].reduce(
+                (sum, unit) =>
+                    sum + unit.size,
+                0
+            );
+
+
+        if (
+    totalPeople !==
+    groupCapacities[g]
+) {
+
+    return null;
+
+}
+
+    }
+
+
+
+    /*
+        ==========================================
+        9. TRASFORMIAMO LE UNITÀ
+        NELLE PERSONE REALI
+        ==========================================
+    */
+
+    return groups.map(
+        group => {
+
+            return group.flatMap(
+                unit =>
+                    unit.people.map(
+                        index =>
+                            people[index]
+                    )
+            );
+
+        }
+    );
+
+}
+
+
+
+    
+        /*
+        ==========================================
+        5. CERCHIAMO LA SOLUZIONE MIGLIORE
+        ==========================================
+    */
+
+
+    let bestGroups =
+        null;
+
+
+    let bestScore =
+        Infinity;
+
+
+    /*
+        Firma della soluzione già mostrata.
+
+        Serve per evitare che CAMBIA
+        riproponga esattamente gli stessi
+        gruppi.
+    */
+
+    let lastSignature = null;
+
+
+    if (lastDisplayedGroups) {
+
+        lastSignature =
+            lastDisplayedGroups
+                .map(
+                    group =>
+                        group
+                            .map(
+                                person =>
+                                    people.indexOf(person)
+                            )
+                            .sort(
+                                (a, b) =>
+                                    a - b
+                            )
+                            .join(",")
+                )
+                .sort()
+                .join("|");
+
+    }
+
+
+
+    /*
+        ==========================================
+        PROVIAMO MOLTE SOLUZIONI
+        ==========================================
+    */
+
+    /*
+    ==========================================
+    NUMERO DI TENTATIVI ADATTIVO
+    ==========================================
+*/
+
+let maxAttempts = 1000;
+
+
+/*
+    Con liste molto grandi aumentiamo
+    leggermente la ricerca.
+*/
+
+if (people.length >= 80) {
+
+    maxAttempts = 1500;
+
+}
+
+if (people.length >= 150) {
+
+    maxAttempts = 2000;
+
+}
+
+for (
+    let attempt = 0;
+    attempt < maxAttempts;
+    attempt++
+) {
+
+        const candidate =
+            generateValidGroups();
+
+
+        /*
+            Se questa combinazione
+            non rispetta i vincoli,
+            la scartiamo.
+        */
+
+        if (!candidate) {
+
+            continue;
+
+        }
+
+
+
+        /*
+            ==========================================
+            FIRMA DELLA NUOVA SOLUZIONE
+            ==========================================
+        */
+
+        let candidateSignature =
+            candidate
+                .map(
+                    group =>
+                        group
+                            .map(
+                                person =>
+                                    people.indexOf(person)
+                            )
+                            .sort(
+                                (a, b) =>
+                                    a - b
+                            )
+                            .join(",")
+                )
+                .sort()
+                .join("|");
+
+
+
+        /*
+            ==========================================
+            NON RIPROPONIAMO LA SOLUZIONE ATTUALE
+            ==========================================
+        */
+
+        if (
+            lastSignature &&
+            candidateSignature ===
+            lastSignature
+        ) {
+
+            continue;
+
+        }
+
+
+
+        /*
+            ==========================================
+            VALUTIAMO LA SOLUZIONE
+            ==========================================
+        */
+
+        const scoreData =
+    calculateScore(
+        candidate,
+        balanceScore,
+        balanceGender,
+        numberOfGroups
+    );
+
+const score =
+    scoreData.finalScore;
+
+
+
+        /*
+            Conserviamo solamente
+            la soluzione migliore trovata.
+        */
+
+        if (
+            score <
+            bestScore
+        ) {
+
+            bestScore =
+                score;
+
+            bestGroups =
+                candidate;
+
+        }
+
+    }
+
+
+
+    /*
+        ==========================================
+        6. SE NON TROVIAMO SOLUZIONI
+        ==========================================
+    */
+
+
+    if (!bestGroups) {
+
+        alert(
+            "Non sono riuscito a trovare una " +
+            "combinazione valida rispettando " +
+            "tutti i vincoli."
+        );
+
+        return;
+
+    }
+
+
+
+    /*
+        ==========================================
+        7. MOSTRIAMO IL RISULTATO
+        ==========================================
+    */
+
+lastDisplayedGroups = bestGroups;
+
+    displayGroups(
+        bestGroups
+    );
+
+
+    changeGroupsButton.classList.remove(
+        "hidden"
+    );
+
+}
+
+function calculateQuality(groups) {
+
+    /*
+        Recuperiamo le impostazioni
+        selezionate dall'utente.
+    */
+
+    const numberOfGroups =
+        groups.length;
+
+
+    const balanceScore =
+        document.getElementById(
+            "balanceScore"
+        ).checked;
+
+
+    const balanceGender =
+        document.getElementById(
+            "balanceGender"
+        ).checked;
+
+
+    /*
+        ==========================================
+        1. EQUILIBRIO DEI PUNTEGGI
+        ==========================================
+    */
+
+    let scorePenalty = 0;
+
+
+    if (balanceScore) {
+
+        const averages =
+            groups.map(
+                group => {
+
+                    const total =
+                        group.reduce(
+                            (sum, person) =>
+                                sum +
+                                Number(
+                                    person.punteggio
+                                ),
+                            0
+                        );
+
+                    return total /
+                        group.length;
+
+                }
+            );
+
+
+        const average =
+            averages.reduce(
+                (a, b) =>
+                    a + b,
+                0
+            ) /
+            averages.length;
+
+
+        if (average > 0) {
+
+            averages.forEach(
+                groupAverage => {
+
+                    const difference =
+                        (
+                            groupAverage -
+                            average
+                        ) /
+                        average;
+
+
+                    scorePenalty +=
+                        difference *
+                        difference;
+
+                }
+            );
+
+
+            scorePenalty /=
+                averages.length;
+
+        }
+
+    }
+
+
+    /*
+        Convertiamo la penalità
+        in una percentuale di qualità.
+    */
+
+    const scoreQuality =
+        balanceScore
+            ? Math.max(
+                0,
+                100 *
+                (1 - scorePenalty)
+            )
+            : null;
+
+
+    /*
+        ==========================================
+        2. EQUILIBRIO MASCHI / FEMMINE
+        ==========================================
+    */
+
+    let genderPenalty = 0;
+
+
+    if (balanceGender) {
+
+        const totalM =
+            people.filter(
+                person =>
+                    person.sesso === "M"
+            ).length;
+
+
+        const totalF =
+            people.filter(
+                person =>
+                    person.sesso === "F"
+            ).length;
+
+
+        const idealM =
+            totalM /
+            numberOfGroups;
+
+
+        const idealF =
+            totalF /
+            numberOfGroups;
+
+
+        groups.forEach(
+            group => {
+
+                const males =
+                    group.filter(
+                        person =>
+                            person.sesso === "M"
+                    ).length;
+
+
+                const females =
+                    group.filter(
+                        person =>
+                            person.sesso === "F"
+                    ).length;
+
+
+                if (idealM > 0) {
+
+                    const differenceM =
+                        (males - idealM) /
+                        idealM;
+
+
+                    genderPenalty +=
+                        differenceM *
+                        differenceM;
+
+                }
+
+
+                if (idealF > 0) {
+
+                    const differenceF =
+                        (females - idealF) /
+                        idealF;
+
+
+                    genderPenalty +=
+                        differenceF *
+                        differenceF;
+
+                }
+
+            }
+        );
+
+
+        genderPenalty /=
+            numberOfGroups * 2;
+
+    }
+
+
+    /*
+        Convertiamo la penalità
+        in una percentuale di qualità.
+    */
+
+    const genderQuality =
+        balanceGender
+            ? Math.max(
+                0,
+                100 *
+                (1 - genderPenalty)
+            )
+            : null;
+
+
+    /*
+        ==========================================
+        3. QUALITÀ COMPLESSIVA
+        ==========================================
+    */
+
+    let finalQuality = 100;
+
+
+    if (
+        balanceScore &&
+        balanceGender
+    ) {
+
+        finalQuality =
+            (scoreQuality * 0.70) +
+            (genderQuality * 0.30);
+
+    } else if (balanceScore) {
+
+        finalQuality =
+            scoreQuality;
+
+    } else if (balanceGender) {
+
+        finalQuality =
+            genderQuality;
+
+    }
+
+
+    /*
+        ==========================================
+        4. RISULTATO
+        ==========================================
+    */
+
+    return {
+
+        overall:
+            Math.round(
+                finalQuality
+            ),
+
+        score:
+            balanceScore
+                ? Math.round(
+                    scoreQuality
+                )
+                : null,
+
+        gender:
+            balanceGender
+                ? Math.round(
+                    genderQuality
+                )
+                : null
+
+    };
+
+}
+
+function displayGroups(groups) {
+
+    groupsContainer.innerHTML = "";
+
+const quality =
+    calculateQuality(groups);
+
+/*
+    ==========================================
+    MOSTRA QUALITÀ DELLA DIVISIONE
+    ==========================================
+*/
+
+const qualityBox =
+    document.createElement("div");
+qualityBox.className =
+    "quality-box";
+
+
+qualityBox.innerHTML =
+
+    "<div class='quality-title'>" +
+        "⭐ Qualità della divisione" +
+        "<strong>" +
+            quality.overall +
+            "%" +
+        "</strong>" +
+    "</div>" +
+
+    "<div class='quality-bar'>" +
+        "<div class='quality-bar-fill' style='width:" +
+            quality.overall +
+            "%'></div>" +
+    "</div>" +
+
+    "<div class='quality-details'>" +
+
+        (
+            quality.score !== null
+                ? "<span>⚖️ Punteggi <strong>" +
+                  quality.score +
+                  "%</strong></span>"
+                : ""
+        ) +
+
+        (
+            quality.gender !== null
+                ? "<span>⚥ M/F <strong>" +
+                  quality.gender +
+                  "%</strong></span>"
+                : ""
+        ) +
+
+    "</div>";
+
+
+groupsContainer.appendChild(
+    qualityBox
+);
+
+    groups.forEach(
+        (group, index) => {
+
+            const totalScore =
+                group.reduce(
+                    (sum, person) =>
+                        sum + person.punteggio,
+                    0
+                );
+
+
+            const males =
+                group.filter(
+                    p => p.sesso === "M"
+                ).length;
+
+
+            const females =
+                group.filter(
+                    p => p.sesso === "F"
+                ).length;
+
+
+            const groupElement =
+    document.createElement("div");
+
+groupElement.className =
+    "group-card";
+
+
+            let html =
+    "<div class='group-header'>" +
+
+        "<div class='group-title'>" +
+            "<span class='group-number'>" +
+                (index + 1) +
+            "</span>" +
+
+            "<div>" +
+                "<h3>Gruppo " +
+                (index + 1) +
+                "</h3>" +
+
+                "<span class='group-people'>" +
+                group.length +
+                " persone" +
+                "</span>" +
+
+            "</div>" +
+        "</div>" +
+
+    "</div>";
+
+
+            html +=
+    "<div class='group-stats'>" +
+
+        "<div>" +
+            "<span>⭐</span>" +
+            "<strong>" +
+            totalScore +
+            "</strong>" +
+            "<small>Punteggio</small>" +
+        "</div>" +
+
+        "<div>" +
+            "<span>♂</span>" +
+            "<strong>" +
+            males +
+            "</strong>" +
+            "<small>Maschi</small>" +
+        "</div>" +
+
+        "<div>" +
+            "<span>♀</span>" +
+            "<strong>" +
+            females +
+            "</strong>" +
+            "<small>Femmine</small>" +
+        "</div>" +
+
+    "</div>";
+
+
+            html += "<div class='people-list'>";
+
+group.forEach(person => {
+
+    const genderClass =
+        person.sesso === "M"
+            ? "male"
+            : "female";
+
+    html +=
+        "<div class='person-row'>" +
+
+            "<div class='person-name'>" +
+                "<strong>" +
+                    person.nome +
+                    " " +
+                    person.cognome +
+                "</strong>" +
+            "</div>" +
+
+            "<div class='person-info'>" +
+
+                "<span class='person-score'>" +
+                    "⭐ " +
+                    person.punteggio +
+                "</span>" +
+
+                "<span class='person-gender " +
+                    genderClass +
+                "'>" +
+                    person.sesso +
+                "</span>" +
+
+            "</div>" +
+
+        "</div>";
+
+});
+
+html += "</div>";
+
+
+            groupElement.innerHTML =
+                html;
+
+
+            groupsContainer.appendChild(
+                groupElement
+            );
+
+        }
+    );
+
+
+    results.classList.remove("hidden");
+
+}
+
+
+/*
+    Pulsante CREA GRUPPI
+*/
+
+createGroupsBtn.addEventListener(
+    "click",
+    createGroups
+);
+
+
+/*
+    Pulsante CAMBIA
+*/
+
+changeGroupsButton.addEventListener(
+    "click",
+    createGroups
+);
+
+togetherButton.addEventListener(
+    "click",
+    function() {
+
+        const selected =
+            Array.from(
+                document.querySelectorAll(
+                    ".personCheckbox:checked"
+                )
+            ).map(
+                checkbox =>
+                    Number(checkbox.value)
+            );
+
+
+        if (selected.length < 2) {
+
+            alert(
+                "Seleziona almeno due persone."
+            );
+
+            return;
+        }
+
+
+        togetherGroups.push(selected);
+
+        updateConstraintsDisplay();
+
+
+        document.querySelectorAll(
+            ".personCheckbox:checked"
+        ).forEach(
+            checkbox =>
+                checkbox.checked = false
+        );
+
+    }
+);
+
+separateButton.addEventListener(
+    "click",
+    function() {
+
+        const selected =
+            Array.from(
+                document.querySelectorAll(
+                    ".personCheckbox:checked"
+                )
+            ).map(
+                checkbox =>
+                    Number(checkbox.value)
+            );
+         
+
+        if (selected.length !== 2) {
+
+            alert(
+                "Per questo vincolo devi selezionare esattamente due persone."
+            );
+
+            return;
+        }
+
+
+        const personA =
+            selected[0];
+
+        const personB =
+            selected[1];
+
+
+        /*
+            Controlliamo se il vincolo
+            esiste già.
+        */
+
+        const alreadyExists =
+            separatePairs.some(
+                pair =>
+                    (
+                        pair[0] === personA &&
+                        pair[1] === personB
+                    ) ||
+                    (
+                        pair[0] === personB &&
+                        pair[1] === personA
+                    )
+            );
+
+
+        if (alreadyExists) {
+
+            alert(
+                "Questo vincolo esiste già."
+            );
+
+            return;
+
+        }
+
+
+        /*
+            Controlliamo se le stesse
+            persone hanno già un vincolo
+            DEVONO STARE INSIEME.
+        */
+
+        const togetherConflict =
+            togetherGroups.some(
+                group =>
+                    group.includes(personA) &&
+                    group.includes(personB)
+            );
+
+
+        if (togetherConflict) {
+
+            alert(
+                "Impossibile creare questo vincolo:\n\n" +
+                "queste due persone devono già stare insieme."
+            );
+
+            return;
+
+        }
+
+
+                separatePairs.push(
+            [
+                personA,
+                personB
+            ]
+        );
+
+
+        updateConstraintsDisplay();
+
+
+        /*
+            Deselezioniamo le persone.
+        */
+
+        document.querySelectorAll(
+            ".personCheckbox:checked"
+        ).forEach(
+            checkbox =>
+                checkbox.checked = false
+        );
+
+    }
+);
+
+
+
+/*
+    ==========================================
+    BLOCCA PERSONA IN UN GRUPPO
+    ==========================================
+*/
+
+lockButton.addEventListener(
+    "click",
+    function() {
+
+        const personSelect =
+            document.getElementById(
+                "personToLock"
+            );
+
+        const groupSelect =
+            document.getElementById(
+                "groupToLock"
+            );
+
+
+        if (
+            personSelect.value === "" ||
+            groupSelect.value === ""
+        ) {
+
+            alert(
+                "Seleziona una persona e un gruppo."
+            );
+
+            return;
+        }
+
+
+        const personIndex =
+            Number(
+                personSelect.value
+            );
+
+
+        const group =
+            Number(
+                groupSelect.value
+            );
+
+
+        /*
+            Controlliamo se la persona
+            è già bloccata.
+        */
+
+        const alreadyLocked =
+            lockedPeople.some(
+                lock =>
+                    lock.personIndex ===
+                    personIndex
+            );
+
+
+        if (alreadyLocked) {
+
+            alert(
+                "Questa persona è già bloccata in un gruppo."
+            );
+
+            return;
+
+        }
+
+
+        /*
+            Controlliamo se la persona
+            appartiene a un blocco
+            DEVONO STARE INSIEME.
+        */
+
+        const togetherGroup =
+            togetherGroups.find(
+                group =>
+                    group.includes(
+                        personIndex
+                    )
+            );
+
+
+        if (togetherGroup) {
+
+            /*
+                Controlliamo se qualcuno
+                del blocco è già bloccato
+                in un altro gruppo.
+            */
+
+            const conflictingLock =
+                lockedPeople.find(
+                    lock =>
+                        togetherGroup.includes(
+                            lock.personIndex
+                        ) &&
+                        lock.group !== group
+                );
+
+
+            if (conflictingLock) {
+
+                const lockedPerson =
+                    people[
+                        conflictingLock.personIndex
+                    ];
+
+
+                alert(
+                    "Impossibile creare il blocco.\n\n" +
+                    people[personIndex].nome +
+                    " " +
+                    people[personIndex].cognome +
+                    " deve stare insieme a " +
+                    lockedPerson.nome +
+                    " " +
+                    lockedPerson.cognome +
+                    ", che è già bloccato nel Gruppo " +
+                    conflictingLock.group +
+                    "."
+                );
+
+
+                return;
+
+            }
+
+
+            /*
+                Blocchiamo tutte le persone
+                del blocco nello stesso gruppo.
+            */
+
+            togetherGroup.forEach(
+                memberIndex => {
+
+                    const alreadyMember =
+                        lockedPeople.some(
+                            lock =>
+                                lock.personIndex ===
+                                memberIndex
+                        );
+
+
+                    if (!alreadyMember) {
+
+                        lockedPeople.push({
+
+                            personIndex:
+                                memberIndex,
+
+                            group:
+                                group
+
+                        });
+
+                    }
+
+                }
+            );
+
+
+        } else {
+
+            /*
+                Persona singola.
+            */
+
+            lockedPeople.push({
+
+                personIndex:
+                    personIndex,
+
+                group:
+                    group
+
+            });  
+
+        }
+
+
+        updateConstraintsDisplay();
+
+
+        /*
+            Reset dei menu.
+        */
+
+        personSelect.value = "";
+
+        groupSelect.value = "";
+
+    }
+);
+
+clearConstraintsButton.addEventListener(
+    "click",
+    function() {
+
+        const hasConstraints =
+            togetherGroups.length > 0 ||
+            separatePairs.length > 0 ||
+            lockedPeople.length > 0;
+
+
+        if (!hasConstraints) {
+
+            alert(
+                "Non ci sono vincoli da cancellare."
+            );
+
+            return;
+
+        }
+
+
+        const confirmation =
+            confirm(
+                "Vuoi davvero cancellare tutti i vincoli?"
+            );
+
+
+        if (!confirmation) {
+
+            return;
+
+        }
+
+
+        /*
+            Cancella tutti i vincoli.
+        */
+
+        togetherGroups = [];
+
+        separatePairs = [];
+
+        lockedPeople = [];
+
+
+        /*
+            Aggiorna la visualizzazione.
+        */
+
+        updateConstraintsDisplay();
+
+    }
+);
+
+updateConstraintsDisplay();
+
+</script>
+
+</body>
+</html>

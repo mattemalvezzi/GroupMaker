@@ -1540,11 +1540,34 @@ input[type="checkbox"]:hover {
 
               people = rows.map((row, index) => {
 
+    const normalizedRow = {};
+
+    Object.keys(row).forEach(key => {
+
+        normalizedRow[
+            key
+                .trim()
+                .toUpperCase()
+        ] = row[key];
+
+    });
+
     return {
-        nome: String(row.NOME).trim(),
-        cognome: String(row.COGNOME).trim(),
-        punteggio: Number(row.PUNTEGGIO),
-        sesso: String(row.SESSO).trim().toUpperCase()
+        nome: String(
+            normalizedRow.NOME
+        ).trim(),
+
+        cognome: String(
+            normalizedRow.COGNOME
+        ).trim(),
+
+        punteggio: Number(
+            normalizedRow.PUNTEGGIO
+        ),
+
+        sesso: String(
+            normalizedRow.SESSO
+        ).trim().toUpperCase()
     };
 
 });
